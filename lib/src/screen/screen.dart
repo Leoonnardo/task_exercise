@@ -1,0 +1,1 @@
+export 'package:asigname/src/screen/home_screen.dart';
