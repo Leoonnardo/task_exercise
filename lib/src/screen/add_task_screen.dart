@@ -1,4 +1,5 @@
 import 'package:asigname/src/api/api_tasks.dart';
+import 'package:asigname/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +21,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   Widget build(BuildContext context) {
     final providerData = Provider.of<Task>(context);
     Map data = providerData.getCompletedInitial;
+    title.text = data["title"];
+    date.text = data["due_date"];
+
 
     return Scaffold(
         appBar: AppBar(
@@ -31,6 +35,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               ListTile(
                 title: TextField(
                   controller: title,
+
                   // decoration: InputDecoration(border: OutlineInputBorder()),
                   maxLines: 1,
                   onChanged: ((value) {
@@ -66,18 +71,19 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    buttonWidget("Guardar", Colors.green, () async {
+                    buttonWidget("Guardar", AppTheme.primary, () async {
                       providerData.setCompleted = data;
-                      print("La data: $data");
+                      // print("La data: $data");
                       await addTaskAppi({
                         "token": "Leonardo",
                         "title": data["title"],
                         "is_completed": data["is_completed"],
                         "due_date": data["due_date"]
                       });
+                      // ignore: use_build_context_synchronously
                       Navigator.popAndPushNamed(context, "HomeScreen");
                     }),
-                    buttonWidget("Cancelar", Colors.blue, (){
+                    buttonWidget("Cancelar", AppTheme.secundary, () {
                       Navigator.popAndPushNamed(context, "HomeScreen");
                     })
                   ],

@@ -43,7 +43,7 @@ Future<List<dynamic>> taskAppi() async {
   var res = await req.send();
   final resBody = await res.stream.bytesToString();
   List results = jsonDecode(resBody);
-  print(results);
+  // print(results);
 
   return results;
 }
@@ -66,7 +66,7 @@ Future<List<dynamic>> taskAppiId(id) async {
   var res = await req.send();
   final resBody = await res.stream.bytesToString();
   List results = jsonDecode(resBody);
-  print(results);
+  // print(results);
 
   return results;
 }
@@ -86,7 +86,7 @@ Future<String> putTaskAppi(String id, body) async {
 
   var res = await req.send();
   final resBody = await res.stream.bytesToString();
-  print(resBody);
+  // print(resBody);
 
   return resBody;
 }
@@ -106,7 +106,7 @@ Future<String> deleteTaskAppi(String id, body) async {
 
   var res = await req.send();
   final resBody = await res.stream.bytesToString();
-  print(resBody);
+  // print(resBody);
 
   return resBody;
 }
@@ -126,7 +126,7 @@ Future<String> addTaskAppi(body) async {
 
   var res = await req.send();
   final resBody = await res.stream.bytesToString();
-  print(resBody);
+  // print(resBody);
 
   return resBody;
 }

@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text("T a r e a s"),
       ),
       body: FutureBuilder(
-        initialData: [],
+        initialData: const [],
         future: taskAppi(),
         builder: ((context, AsyncSnapshot snapshot) {
           List tradeData = snapshot.data;

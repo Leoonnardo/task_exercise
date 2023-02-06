@@ -1,4 +1,5 @@
 import 'package:asigname/src/api/api_tasks.dart';
+import 'package:asigname/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -69,9 +70,9 @@ class _TaskCompleteScreenState extends State<TaskCompleteScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    buttonWidget("Guardar", Colors.green, () async {
+                    buttonWidget("Guardar", AppTheme.primary, () async {
                       providerData.setCompleted = data;
-                      print("La data: $data");
+                      // print("La data: $data");
                       await putTaskAppi(data["id"].toString(), {
                         "token": "Leonardo",
                         "title": data["title"],
@@ -80,7 +81,7 @@ class _TaskCompleteScreenState extends State<TaskCompleteScreen> {
                       });
                       Navigator.popAndPushNamed(context, "HomeScreen");
                     }),
-                    buttonWidget("Cancelar", Colors.blue, (){
+                    buttonWidget("Cancelar", AppTheme.secundary, () {
                       Navigator.popAndPushNamed(context, "HomeScreen");
                     })
                   ],
@@ -88,7 +89,7 @@ class _TaskCompleteScreenState extends State<TaskCompleteScreen> {
               ),
               buttonWidget("Eliminar tarea", Colors.red, () async {
                 await deleteTaskAppi(
-                          data["id"].toString(), {"token": "Leonardo"});
+                    data["id"].toString(), {"token": "Leonardo"});
                 Navigator.popAndPushNamed(context, "HomeScreen");
               })
             ],

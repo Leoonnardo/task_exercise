@@ -20,7 +20,6 @@ class RefreshWidget extends StatefulWidget {
 
 class _RefreshWidgetState extends State<RefreshWidget> {
   final List _iSChecked = [];
-  final List _taskComplete = [];
 
   bool completeBool(data) {
     if (data == 1) {
@@ -43,13 +42,13 @@ class _RefreshWidgetState extends State<RefreshWidget> {
     final providerData = Provider.of<Task>(context);
     return RefreshIndicator(
         child: ListView.separated(
-            separatorBuilder: ((context, index) => Divider()),
+            separatorBuilder: ((context, index) => const Divider()),
             itemBuilder: ((context, index) {
               _iSChecked.add([
                 widget.tradeData[index]["id"],
                 widget.tradeData[index]["is_completed"]
               ]);
-              print(_iSChecked);
+              // print(_iSChecked);
               return Card(
                 child: Column(
                   children: [
@@ -57,7 +56,7 @@ class _RefreshWidgetState extends State<RefreshWidget> {
                       ListTile(
                         title: Text(
                           widget.tradeData[index]["title"],
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                         ),
                         trailing: Checkbox(
                             activeColor: AppTheme.primary,
@@ -78,7 +77,7 @@ class _RefreshWidgetState extends State<RefreshWidget> {
                           // _taskComplete.add(taskAppiId(widget.tradeData[index]["id"]));
                           // providerData.isCompleted = _taskComplete[0];
                           providerData.setCompleted = widget.tradeData[index];
-                          print(providerData.getCompleted);
+                          // print(providerData.getCompleted);
                           // print(providerData.getCompleted);
                           Navigator.popAndPushNamed(context, "TaskScreen");
                         },

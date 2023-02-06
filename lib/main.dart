@@ -1,11 +1,8 @@
 import 'package:asigname/src/providers/task.dart';
 import 'package:asigname/src/router/app_routes.dart';
-import 'package:asigname/src/screen/task_complete_screen.dart';
 import 'package:asigname/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'src/screen/screen.dart';
 
 void main() => runApp(const MyApp());
 

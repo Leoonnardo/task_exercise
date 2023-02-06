@@ -15,9 +15,9 @@ class Task with ChangeNotifier {
 
   get getCompletedInitial {
     return {
-      "title": "",
+      "title": "Nueva tarea",
       "is_completed": 0,
-      "due_date": ""
+      "due_date": "2023-02-06"
     };
   }
 
