@@ -13,9 +13,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("T a r e a s"),
+      ),
       body: FutureBuilder(
         initialData: [],
         future: taskAppi(),
@@ -26,8 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
           // }
         }),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          Navigator.popAndPushNamed(context, "AddTaskScreen");
+        },
+      ),
     );
   }
 }
-
-

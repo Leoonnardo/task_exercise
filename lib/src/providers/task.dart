@@ -1,24 +1,32 @@
 import 'package:flutter/material.dart';
 
 class Task with ChangeNotifier {
-  String _theme = "light";
-  List isCompleted = [];
-
-  get getTheme {
-    return _theme;
-  }
-
-  set setTheme(String theme) {
-    _theme = theme;
-    notifyListeners();
-  }
+  late Map isCompleted;
+  int _complete = 2;
 
   get getCompleted {
     return isCompleted;
   }
 
-  set setCompleted(List completed) {
-    isCompleted.add(completed);
+  set setCompleted(Map completed) {
+    isCompleted = completed;
+    notifyListeners();
+  }
+
+  get getCompletedInitial {
+    return {
+      "title": "",
+      "is_completed": 0,
+      "due_date": ""
+    };
+  }
+
+  get getTaskId {
+    return _complete;
+  }
+
+  set setTaskId(int complete) {
+    _complete = complete;
     notifyListeners();
   }
 }

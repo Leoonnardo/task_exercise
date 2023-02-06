@@ -48,6 +48,29 @@ Future<List<dynamic>> taskAppi() async {
   return results;
 }
 
+Future<List<dynamic>> taskAppiId(id) async {
+  var headersList = {
+    'Authorization':
+        'Bearer e864a0c9eda63181d7d65bc73e61e3dc6b74ef9b82f7049f1fc7d9fc8f29706025bd271d1ee1822b15d654a84e1a0997b973a46f923cc9977b3fcbb064179ecd',
+    'Content-Type': 'application/json',
+  };
+  var url =
+      Uri.parse('https://ecsdevapi.nextline.mx/vdev/tasks-challenge/tasks/$id');
+
+  var body = {"token": "Leonardo"};
+
+  var req = http.Request('GET', url);
+  req.headers.addAll(headersList);
+  req.body = json.encode(body);
+
+  var res = await req.send();
+  final resBody = await res.stream.bytesToString();
+  List results = jsonDecode(resBody);
+  print(results);
+
+  return results;
+}
+
 Future<String> putTaskAppi(String id, body) async {
   var headersList = {
     'Authorization':
@@ -58,6 +81,46 @@ Future<String> putTaskAppi(String id, body) async {
       Uri.parse('https://ecsdevapi.nextline.mx/vdev/tasks-challenge/tasks/$id');
 
   var req = http.Request('PUT', url);
+  req.headers.addAll(headersList);
+  req.body = json.encode(body);
+
+  var res = await req.send();
+  final resBody = await res.stream.bytesToString();
+  print(resBody);
+
+  return resBody;
+}
+
+Future<String> deleteTaskAppi(String id, body) async {
+  var headersList = {
+    'Authorization':
+        'Bearer e864a0c9eda63181d7d65bc73e61e3dc6b74ef9b82f7049f1fc7d9fc8f29706025bd271d1ee1822b15d654a84e1a0997b973a46f923cc9977b3fcbb064179ecd',
+    'Content-Type': 'application/json',
+  };
+  var url =
+      Uri.parse('https://ecsdevapi.nextline.mx/vdev/tasks-challenge/tasks/$id');
+
+  var req = http.Request('DELETE', url);
+  req.headers.addAll(headersList);
+  req.body = json.encode(body);
+
+  var res = await req.send();
+  final resBody = await res.stream.bytesToString();
+  print(resBody);
+
+  return resBody;
+}
+
+Future<String> addTaskAppi(body) async {
+  var headersList = {
+    'Authorization':
+        'Bearer e864a0c9eda63181d7d65bc73e61e3dc6b74ef9b82f7049f1fc7d9fc8f29706025bd271d1ee1822b15d654a84e1a0997b973a46f923cc9977b3fcbb064179ecd',
+    'Content-Type': 'application/json',
+  };
+  var url =
+      Uri.parse('https://ecsdevapi.nextline.mx/vdev/tasks-challenge/tasks');
+
+  var req = http.Request('POST', url);
   req.headers.addAll(headersList);
   req.body = json.encode(body);
 
